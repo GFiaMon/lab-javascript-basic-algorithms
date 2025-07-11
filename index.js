@@ -12,7 +12,7 @@ hacker1 = 'Juan'
 hacker2 = 'Anna'
 
 if(hacker1.length > hacker2.length){
-  console.log(`The driver has the longest name and it has ${hacker1.length} characters.`)
+  console.log(`The driver has the longest name it has ${hacker1.length} characters.`)
 }else if(hacker1.length < hacker2.length){
   console.log(`It seems that the navigator has the longest name with ${hacker2.length} characters`)
 }else{
@@ -28,8 +28,15 @@ for (let i = 0; i < hacker1.length; i++){   // the loop has 3 expressions, 1st d
 console.log(newHacker1.toUpperCase().trim())
 
 // 3.2
-
+//option 1:
 console.log(hacker2.split("").reverse().join(''))
+// option 2:
+let reversed = '';
+for (let i = hacker2.length - 1; i >= 0; i--) {
+  reversed += hacker2[i];
+}
+console.log(reversed);
+
 
 // 3.3
 
@@ -46,21 +53,59 @@ let longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam orn
 Sed placerat, diam vitae dictum lobortis, magna ligula lobortis dui, id pulvinar quam metus at libero. Mauris ut ultricies enim. Sed nec enim sit amet ex mollis feugiat. Maecenas feugiat porta magna, at congue magna lobortis eget. Maecenas ultricies ante in mollis pellentesque. Cras tempor tellus id ante porta cursus. Nam quis egestas ex, sit amet lobortis leo. Nunc sed elit tortor.
 
 Nulla auctor sodales turpis. Fusce condimentum urna leo, sed tempor augue molestie ut. Suspendisse auctor odio a felis efficitur, sed accumsan eros sollicitudin. Mauris id augue non nisi laoreet auctor. Maecenas tincidunt ante sit amet nunc porta, sit amet accumsan nunc tincidunt. Nam commodo orci tristique, venenatis urna eget, facilisis quam. Suspendisse vel enim id nisl lacinia euismod at a arcu. Fusce ut orci rhoncus, vestibulum erat sed, semper ex. Donec vitae dolor elit. Praesent maximus nisl sed nulla condimentum consequat. Pellentesque at interdum diam, eu congue lorem. Etiam porttitor consectetur aliquam.`
- 
+
 // Number of charachters:
-console.log(longText.length)
+console.log(longText.length);
 // Number of Words:
-console.log(`Number of words in the text is: ${longText.split(" ").length}`)
+console.log(`Number of words in the text is: ${longText.split(" ").length}`);
+
+let wordsArray = longText.split(" ");
+
+// Word counter Option 1 with loop:
+let wordCounter = 0;
+for (let word of wordsArray){
+  wordCounter += 1;
+}
+console.log('Nr Words counted with loop:', wordCounter);
+// Option 2 with length directly as it is an array
+console.log("Nr Words counted with array's lenght:", wordsArray.length);
+
 
 // Count number of times a word appears:
 
-wordsArray = longText.split(" ")
-
 let counter = 0
 
-for (let i = 0; i < wordsArray.lenght; i++){
-  if(i.includes('et')){
+for (let i = 0; i < wordsArray.length; i++){
+  if(wordsArray[i] === 'et'){
   counter += 1  
   }else(counter += 0)
 }
-console.log(counter)
+console.log("Nr of times he word 'et' appears:", counter)
+
+
+// Bonus 2:
+
+let phraseToCheck = "A man, a plan, a canal, Panama!";
+let cleanedPhrase = phraseToCheck.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+let isPalindrome = true;
+
+for (let i = 0; i < cleanedPhrase.length / 2; i++) {
+  if (cleanedPhrase[i] !== cleanedPhrase[cleanedPhrase.length - 1 - i]) {
+    isPalindrome = false;
+    break;
+  }
+}
+
+console.log(isPalindrome ? "It's a palindrome!" : "It's not a palindrome.");
+
+// Option 2:
+
+let phraseToCheck2 = "Amor, Roma"
+let phraseToCheckclear = phraseToCheck2.replace(/[.,!?;:]/g, '').toLowerCase()
+let reversePhrase = phraseToCheckclear.split('').reverse().join('');
+if (phraseToCheckclear == reversePhrase) {
+    console.log("Palindrome")
+} else {
+    console.log("Not a palindrome")
+}
+
